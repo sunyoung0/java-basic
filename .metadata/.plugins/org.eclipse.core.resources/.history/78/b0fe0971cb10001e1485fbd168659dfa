@@ -1,0 +1,19 @@
+package chapter4;
+
+// Generic 
+// 클래스나 메서드에서 사용할 데이터 타입을 내부에서 지정하는 것이 아니라
+// 외부에서 지정하도록 하는 기능
+// 사용하는 이유 : 타입의 안정성을 보장, 코드의 재사용성을 보장
+
+// Generic Class
+// 클래스에서 사용할 타입을 클래스 외부에서 받아오는 클래스 
+// 선언 방법
+// class 클래스명 <매개타입> { ... }
+
+public class GenericClass {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

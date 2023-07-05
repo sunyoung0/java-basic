@@ -1,0 +1,63 @@
+package basicPractice.hr.controller.implement;
+
+import basicPractice.hr.controller.MainController;
+import basicPractice.hr.dto.GetEmployeeListResponseDto;
+import basicPractice.hr.dto.PatchEmployeeRequestDto;
+import basicPractice.hr.dto.PostEmployeeRequestDto;
+import basicPractice.hr.service.MainService;
+
+//MainController의 구현체 
+public class MainControllerImplement implements MainController {
+
+	private final MainService mainService;
+	
+	public MainControllerImplement(MainService mainService) {
+		this.mainService = mainService;
+	}
+	
+	@Override
+	public void postEmployee(PostEmployeeRequestDto dto) {
+		// 필수로 입력해야하는 입력 값이 모두 입력 되었는지 확인
+		// isBlank() : 해당 메서드가 빈 값이거나 공백으로만 채워져있는 지 판단하는 것 
+		boolean validated = dto.isValidate();
+		
+		// 만약에 필수 입력이 모두 입력 되지 않았으면 알림 출력 후 메서드 종료 
+		if(!validated) {
+			System.out.println("모든 값을 입력하세요.");
+			return;
+		}
+		// 입력 값이 모두 입력 되었다면 실제 비즈니스 로직을 실행하여 결과를 반환 받음
+		boolean result = mainService.postEmployee(dto);
+		
+		// 결과를 출력
+		String resultMessage = result? "인사 등록에 성공했습니다." : "인사 등록에 실패했습니다.";
+		System.out.println(resultMessage);
+	}
+
+	@Override
+	public void getEmployeeList() {
+		
+		GetEmployeeListResponseDto[] result = mainService.getEmployeeList();
+		
+		for(GetEmployeeListResponseDto item : result) {
+			System.out.println(item);
+		}
+		
+	}
+
+	@Override
+	public void getEmployee(String employeeNumber) {
+
+	}
+
+	@Override
+	public void patchEmployee(PatchEmployeeRequestDto dto) {
+
+	}
+
+	@Override
+	public void deleteEmployee(String employeeNumber) {
+
+	}
+
+}

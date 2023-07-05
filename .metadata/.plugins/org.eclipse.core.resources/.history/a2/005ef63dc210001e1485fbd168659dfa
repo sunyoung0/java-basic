@@ -1,0 +1,9 @@
+package chapter4;
+
+public class RandomClass {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

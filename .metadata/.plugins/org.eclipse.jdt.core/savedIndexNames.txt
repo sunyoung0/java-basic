@@ -1,0 +1,6 @@
+INDEX VERSION 1.132+C:\20230530_psy\java-basic\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+638842783.index
+3780972541.index
+1507904597.index
+1808637612.index

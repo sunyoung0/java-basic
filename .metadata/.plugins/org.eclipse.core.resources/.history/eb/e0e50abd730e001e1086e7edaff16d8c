@@ -1,0 +1,81 @@
+package basicPractice.hr;
+
+import java.util.Scanner;
+
+import basicPractice.hr.controller.MainController;
+import basicPractice.hr.controller.implement.MainControllerImplement;
+import basicPractice.hr.dto.PostEmployeeRequestDto;
+import basicPractice.hr.repository.EmployeeRepository;
+import basicPractice.hr.repository.implement.EmployeeRepositoryImplement;
+import basicPractice.hr.service.MainService;
+import basicPractice.hr.service.implement.MainServiceImplement;
+
+// 간단한 인사관리 프로그램
+// 인사 등록, 직원 조회(전체, 특정 직원), 직원 정보 수정, 직원 삭제
+// [CRUD] : Create, Read, Update, Delete
+
+// 관리할 데이터
+// 직원 : 사번, 이름, 주소, 생년월일, 이메일, 부서
+
+// 기능의 세부사항
+// 인사등록 : 사용자가 사번, 이름, 주소, 생년월일, 이메일, 부서를 입력하면 입력한 데이터를 기반으로 저장소에 저장됨
+// 직원 조회 (전체) : 저장소에 저장된 직원 정보 리스트를 출력
+// 직원 조회 (특정 직원) : 사번을 입력하면 입력한 사번에 해당하는 직원 정보를 출력
+// 직원 정보 수정 : 사번을 입력하고 이름, 주소, 생년월일, 이메일, 부서를 입력하면 
+//				입력한 데이터를 기반으로 해당 사번의 직원 정보를 수정
+// 직원 삭제 : 사번을 입력하면 해당하는 사번의 직원 정보를 저장소에서 제거함 
+
+public class MainApplication {
+
+	public static MainController mainController;
+	
+	public static void main(String[] args) {
+				
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("작업 : ");
+		String method = scanner.nextLine();
+		
+		EmployeeRepository employeeRepository = new EmployeeRepositoryImplement();
+		MainService mainService = new MainServiceImplement(employeeRepository);
+		mainController = new MainControllerImplement(mainService);
+		
+		if(method.equals("POST /employee")) postEmployee();
+		if(method.equals("GET /employee/list"))getEmployeeList();
+	}
+	
+	private static void postEmployee() {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("사번 : ");
+		String employeeNumber = scanner.nextLine();
+		System.out.print("이름 : ");
+		String name = scanner.nextLine();
+		System.out.print("주소 : ");
+		String address = scanner.nextLine();
+		System.out.print("생년월일 : ");
+		String birth = scanner.nextLine();
+		System.out.print("이메일 : ");
+		String email = scanner.nextLine();
+		System.out.print("부서 : ");
+		String department = scanner.nextLine();
+		
+		PostEmployeeRequestDto dto = new PostEmployeeRequestDto();
+		dto.setEmployeeNumber(employeeNumber);
+		dto.setName(name);
+		dto.setAddress(address);
+		dto.setBirth(birth);
+		dto.setEmail(email);
+		dto.setDepartment(department);
+		
+		mainController.postEmployee(dto);
+	}
+	
+	private static void getEmployeeList() {
+		
+		mainController.getEmployeeList();
+		
+	}
+
+}

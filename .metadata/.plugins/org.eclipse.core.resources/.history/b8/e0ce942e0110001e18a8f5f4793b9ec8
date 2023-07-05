@@ -1,0 +1,13 @@
+package chapter4;
+
+// Collection Framework
+// 데이터를 저장, 검색, 수정,  삭제 표준화된 데이터 구조를 제공하는 인터페이스 및 그 구현체들
+// 단순한 배열만을 사용했을 때 발생하는 여러 문제 및 불편사항을 해결
+
+public class CollectionFramework {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

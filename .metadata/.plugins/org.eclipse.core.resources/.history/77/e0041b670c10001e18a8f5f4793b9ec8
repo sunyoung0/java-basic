@@ -1,0 +1,17 @@
+package chapter4;
+
+import java.util.Date;
+
+//날짜 및 시간과 관련된 클래스
+public class DateTimeClass {
+
+	public static void main(String[] args) {
+		
+		// Date 클래스
+		// 시간을 1970년 1월 1일 0시 0분 0초 기준으로 경과한 시간을 표현
+		Date nowDate = new Date();
+		System.out.println(nowDate);
+		System.out.println(nowDate.getMonth());
+	}
+
+}
